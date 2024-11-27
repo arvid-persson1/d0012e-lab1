@@ -1,6 +1,8 @@
 from random import randint, random
 from time import time
+
 from stack import Stack
+
 
 # It might have made more sense to have only one
 # stack as a parameter and to create the empty stack
@@ -27,6 +29,7 @@ def sort(a: Stack, b: Stack) -> Stack:
 
     return b
 
+
 def gen_random(size: int, min: int, max: int) -> Stack[int]:
     s = Stack()
 
@@ -34,6 +37,7 @@ def gen_random(size: int, min: int, max: int) -> Stack[int]:
         s.push(randint(min, max))
 
     return s
+
 
 def gen_sorted_asc(size: int) -> Stack[int]:
     s = Stack()
@@ -43,6 +47,7 @@ def gen_sorted_asc(size: int) -> Stack[int]:
 
     return s
 
+
 def gen_sorted_desc(size: int) -> Stack[int]:
     s = Stack()
 
@@ -50,6 +55,7 @@ def gen_sorted_desc(size: int) -> Stack[int]:
         s.push(i)
 
     return s
+
 
 def gen_almost_asc(size: int, error_chance: float) -> Stack[int]:
     assert 0 < error_chance < 1
@@ -63,7 +69,8 @@ def gen_almost_asc(size: int, error_chance: float) -> Stack[int]:
             s.push(i)
 
     return s
-        
+
+
 def gen_almost_desc(size: int, error_chance: float) -> Stack[int]:
     assert 0 < error_chance < 1
 
@@ -77,6 +84,7 @@ def gen_almost_desc(size: int, error_chance: float) -> Stack[int]:
 
     return s
 
+
 def is_sorted(stack: Stack) -> bool:
     a = stack.pop()
 
@@ -88,17 +96,20 @@ def is_sorted(stack: Stack) -> bool:
 
     return True
 
+
 def main():
     print("size\tsorted (asc.)\talmost asc.\tsorted (desc.)\talmost desc.\trandom")
 
-    for size in (10 ** i for i in range(7)):
+    for size in (1, 10, 100, 1000, 10000, 50000):
         print(f"{size}\t", end="")
 
-        inputs = (gen_sorted_asc(size),
-                  gen_almost_asc(size, 0.05),
-                  gen_sorted_desc(size),
-                  gen_almost_desc(size, 0.05),
-                  gen_random(size, 1, size))
+        inputs = (
+            gen_sorted_asc(size),
+            gen_almost_asc(size, 0.05),
+            gen_sorted_desc(size),
+            gen_almost_desc(size, 0.05),
+            gen_random(size, 1, size),
+        )
         for s in inputs:
             start = time()
             s = sort(s, Stack())
@@ -107,9 +118,10 @@ def main():
             assert is_sorted(s)
 
             elapsed = end - start
-            print(f"{elapsed:<14.6g}\t", end = "")
+            print(f"{elapsed:<14.6g}\t", end="")
 
         print()
+
 
 if __name__ == "__main__":
     main()

@@ -79,8 +79,9 @@ This confirms the quadratic time complexity.
 = Experimentation
 
 The decision was made for experiments to be run on data sets of sizes $10^k$.
-$k = 4$ turned out to be the largest value that would finish in any reasonable
-amount of time. For each size, five stacks were generated and sorted:
+As $k = 4$ turned out to be the largest value that would finish in any
+reasonable amount of time, a stack of $50000$ was also tried.
+For each size, five stacks were generated and sorted:
 
 - One sorted in ascending order (the worst case).
 
@@ -100,18 +101,19 @@ For more accurate results, several runs given the same conditions should have be
 #table(
     columns: 6,
     table.header(
-        $k$,
+        [Size],
         [Sorted (asc.)],
         [Semi-sorted (asc.)],
         [Sorted (desc.)],
         [Semi-sorted (desc.)],
         [Random]
     ),
-    $0$, $4.53 dot.op 10^(-6)$, $3.34 dot.op 10^(-6)$, $2.15 dot.op 10^(-6)$, $1.91 dot.op 10^(-6)$, $1.43 dot.op 10^(-6)$,
-    $1$, $9.11 dot.op 10^(-5)$, $8.77 dot.op 10^(-5)$, $1.22 dot.op 10^(-5)$, $1.36 dot.op 10^(-5)$, $4.91 dot.op 10^(-5)$,
-    $2$, $8.92 dot.op 10^(-3)$, $8.56 dot.op 10^(-3)$, $1.19 dot.op 10^(-4)$, $1.27 dot.op 10^(-4)$, $3.94 dot.op 10^(-3)$,
-    $3$, $0.722$, $0.713$, $9.96 dot.op 10^(-4)$, $1.06 dot.op 10^(-3)$, $0.353$,
-    $4$, $74.9$, $73.6$, $1.09 dot.op 10^(-2)$, $1.19 dot.op 10^(-2)$, $39.1$,
+    $1$, $4.53 dot.op 10^(-6)$, $3.34 dot.op 10^(-6)$, $2.15 dot.op 10^(-6)$, $1.91 dot.op 10^(-6)$, $1.43 dot.op 10^(-6)$,
+    $10$, $9.11 dot.op 10^(-5)$, $8.77 dot.op 10^(-5)$, $1.22 dot.op 10^(-5)$, $1.36 dot.op 10^(-5)$, $4.91 dot.op 10^(-5)$,
+    $100$, $8.92 dot.op 10^(-3)$, $8.56 dot.op 10^(-3)$, $1.19 dot.op 10^(-4)$, $1.27 dot.op 10^(-4)$, $3.94 dot.op 10^(-3)$,
+    $1000$, $0.722$, $0.713$, $9.96 dot.op 10^(-4)$, $1.06 dot.op 10^(-3)$, $0.353$,
+    $10000$, $74.9$, $73.6$, $1.09 dot.op 10^(-2)$, $1.19 dot.op 10^(-2)$, $39.1$,
+    $50000$, $1875.8$, $1837.15$, $0.102321$, $0.172322$, $880.92$
 )
 
 As expected, the fully sorted cases are the extremes with the semi-sorted
